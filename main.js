@@ -19,10 +19,11 @@ $$(document).on('pageInit', function (e) {
 
 $$(document).on('pageBeforeAnimation', function (e) {
 	(viewMain.history.length - 1 < 2) ? myApp.openPanel('left') : myApp.closePanel();
+	viewLeft.params.animatePages = (viewMain.history.length - 1 < 2) ? false : true;
 });
 
 if(window.navigator.standalone) $$("meta[name='apple-mobile-web-app-status-bar-style']")[0].remove();
 
 viewLeft.loadPage('menu.html');
-myApp.openPanel('left');
-
+viewLeft.params.animatePages = false;
+viewMain.loadPage('about.html');
